@@ -97,6 +97,12 @@ public class ITG3205 {
     public static final byte ITG3205_CLOCK_PLL_EXT19M            = 0x05;
 
     public static final float ITG3205_SENSITIVITY_SCALE_FACTOR = 14.375f;
+    public static final int sampleRateDivider = 2;
+    float scalingFactor = 1f / ITG3205.ITG3205_SENSITIVITY_SCALE_FACTOR;
+
+    //read results
+    private short[] raw = new short[3];
+    private float[] r = new float[3];
 
     /**
      * I2C bus number to use to access device.
@@ -118,8 +124,11 @@ public class ITG3205 {
      */
     private final byte[] BUFFER = new byte[6];
 
-    public ITG3205(int bus) {
+    public ITG3205(int bus) throws IOException, UnsupportedBusNumberException {
         this(bus, ITG3205_DEFAULT_ADDRESS);
+        this.setup();
+        this.writeSampleRateDivider(2); // 2667 Hz
+        this.writeDLPFBandwidth(ITG3205.ITG3205_DLPF_BW_256);
     }
 
     /**
@@ -128,9 +137,13 @@ public class ITG3205 {
      * @param bus
      * @param address I2C address
      */
-    public ITG3205(int bus, int address) {
+    public ITG3205(int bus, int address) throws IOException, UnsupportedBusNumberException{
         i2cBus = bus;
         devAddr = address;
+        this.setup();
+        this.writeSampleRateDivider(2); // 2667 Hz
+        this.writeDLPFBandwidth(ITG3205.ITG3205_DLPF_BW_256);
+
     }
 
     /**
@@ -144,6 +157,10 @@ public class ITG3205 {
 
         writeFullScaleRange(ITG3205_FULLSCALE_2000);
         writeClockSource(ITG3205_CLOCK_PLL_XGYRO);
+
+        if (this.verifyDeviceID()) {
+            throw new IOException("Failed to verify Sensors.ITG3205 device ID");
+        }
     }
 
     /**
@@ -427,21 +444,27 @@ public class ITG3205 {
      * These registers contain the gyro sensor data for the ITG-3205 parts. At
      * any time, these values ￼can be read from the device; however it is best to
      * use the interrupt function to determine when new data is available.
-     *
-     * @param raw Array of raw values whereas index 0 = x, 1 = y, 2 = z
+     * raw Array of raw values whereas index 0 = x, 1 = y, 2 = z
      * @throws IOException
      */
-    public void readRawRotations(short[] raw) throws IOException {
-        if (raw.length != 3)
+    public void readRawRotations() throws IOException {
+        if (this.raw.length != 3)
             throw new IllegalArgumentException("Raw rotation array must have a length of 3");
 
         int offset = 0;
         int size = 6;
         i2c.read(ITG3205_REGISTER_GYRO_XOUT_H, BUFFER, offset, size);
 
-        raw[0] = (short) ((BUFFER[0] << 8) | (BUFFER[1] & 0xFF)); // x
-        raw[1] = (short) ((BUFFER[2] << 8) | (BUFFER[3] & 0xFF)); // y
-        raw[2] = (short) ((BUFFER[4] << 8) | (BUFFER[5] & 0xFF)); // z
+        this.raw[0] = (short) ((BUFFER[0] << 8) | (BUFFER[1] & 0xFF)); // x
+        this.raw[1] = (short) ((BUFFER[2] << 8) | (BUFFER[3] & 0xFF)); // y
+        this.raw[2] = (short) ((BUFFER[4] << 8) | (BUFFER[5] & 0xFF)); // z
+
+        for (int i = 0; i < raw.length; i++) {
+            this.r[i] = (float) raw[i] * scalingFactor;
+        }
     }
 
+    public float[] getR() {
+        return r;
+    }
 }
