@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="pi4j-service">
+    <CLASSES>
+      <root url="jar://D:/RaspberryPi/p4j/pi4j-service.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

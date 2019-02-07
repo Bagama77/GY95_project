@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="GY95:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/GY95_jar</output-path>
+    <root id="archive" name="GY95.jar">
+      <element id="module-output" name="GY95" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/jar_files (2)/linux-i2c-1.0.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/jar_files (1)/pi4j-core-1.1.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
