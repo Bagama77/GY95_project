@@ -107,12 +107,12 @@ public class ITG3205 {
     /**
      * I2C bus number to use to access device.
      */
-    private final int i2cBus;
+    private final int i2cBus = I2CBus.BUS_1;
 
     /**
      * Address of I2C device.
      */
-    private final int devAddr;
+    private final int devAddr = 0x68;
 
     /**
      * Abstraction of I2C device.
@@ -124,22 +124,27 @@ public class ITG3205 {
      */
     private final byte[] BUFFER = new byte[6];
 
-    public ITG3205(int bus) throws IOException, UnsupportedBusNumberException {
-        this(bus, ITG3205_DEFAULT_ADDRESS);
+
+    public ITG3205() throws IOException, UnsupportedBusNumberException {
+
+        this(ITG3205_DEFAULT_ADDRESS);
         this.setup();
         this.writeSampleRateDivider(2); // 2667 Hz
         this.writeDLPFBandwidth(ITG3205.ITG3205_DLPF_BW_256);
+        if (this.verifyDeviceID()) {
+            throw new IOException("Failed to verify Sensors.ITG3205 device ID");
+        }
     }
 
     /**
      * Specific address constructor.
      *
-     * @param bus
+     *
      * @param address I2C address
      */
-    public ITG3205(int bus, int address) throws IOException, UnsupportedBusNumberException{
-        i2cBus = bus;
-        devAddr = address;
+    public ITG3205(int address) throws IOException, UnsupportedBusNumberException{
+
+//        devAddr = address;
         this.setup();
         this.writeSampleRateDivider(2); // 2667 Hz
         this.writeDLPFBandwidth(ITG3205.ITG3205_DLPF_BW_256);
@@ -158,9 +163,7 @@ public class ITG3205 {
         writeFullScaleRange(ITG3205_FULLSCALE_2000);
         writeClockSource(ITG3205_CLOCK_PLL_XGYRO);
 
-        if (this.verifyDeviceID()) {
-            throw new IOException("Failed to verify Sensors.ITG3205 device ID");
-        }
+
     }
 
     /**

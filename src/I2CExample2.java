@@ -30,7 +30,7 @@ public class I2CExample2 {
         //--------------Sensors.ITG3205----------------------------------------------------------------
         // http://developer-blog.net/wp-content/uploads/2013/09/raspberry-pi-rev2-gpio-pinout.jpg
         // http://pi4j.com/example/control.html
-        ITG3205 itg3205 = new ITG3205(I2CBus.BUS_1);
+        ITG3205 itg3205 = new ITG3205();
 
         //--------------------------MAIN CYCLE--------------------------------
         while(true){
