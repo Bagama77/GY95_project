@@ -82,9 +82,9 @@ public class JBalancePI{
         float dErr = (error - lastErr) / timeChange;  // Differentiation
         float output = Kp * error + Ki * errSum + Kd * dErr;
         lastErr = error;
-        LOutput = output - Turn_Speed + Run_Speed;
-        ROutput = output + Turn_Speed + Run_Speed;
-        logger.log(Level.INFO,"PID: " + LOutput + ROutput);
+//        LOutput = output - Turn_Speed + Run_Speed;
+//        ROutput = output + Turn_Speed + Run_Speed;
+//        logger.log(Level.INFO,"PID: " + LOutput + ROutput);
 
     }
 
