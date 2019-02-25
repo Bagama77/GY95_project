@@ -11,15 +11,13 @@ import com.pi4j.util.Console;
 public class ITG3205 {
 
     /**
-     * Address of the Sensors.ITG3205 with the AL0 pin tied to GND (low).
-     *
+     * Address of the Sensors.ITG3205 with the AL0 pin tied to GND (low)
      * Default for SparkFun IMU Digital Combo board.
      */
     public static final byte ITG3205_ADDRESS_AD0_LOW = 0x68;
 
     /**
      * Address of the Sensors.ITG3205 with the AL0 pin tied to VCC (high).
-     *
      * Default for SparkFun ITG-3200 Breakout board.
      */
     public static final byte ITG3205_ADDRESS_AD0_HIGH = 0x68;
@@ -138,8 +136,6 @@ public class ITG3205 {
 
     /**
      * Specific address constructor.
-     *
-     *
      * @param address I2C address
      */
     public ITG3205(int address) throws IOException, UnsupportedBusNumberException{

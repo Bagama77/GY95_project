@@ -9,7 +9,7 @@ import com.pi4j.io.i2c.I2CFactory;
 import com.pi4j.io.i2c.I2CFactory.UnsupportedBusNumberException;
 import com.pi4j.util.Console;
 
-public class I2CExample2 {
+public class Main {
 
     // GY-85 I2C addresses
     public static final int ADXL345_ADDR = 0x53;
