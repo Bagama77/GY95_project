@@ -129,7 +129,7 @@ public class ITG3205 {
         this.setup();
         this.writeSampleRateDivider(2); // 2667 Hz
         this.writeDLPFBandwidth(ITG3205.ITG3205_DLPF_BW_256);
-        if (this.verifyDeviceID()) {
+        if (!this.verifyDeviceID()) {
             throw new IOException("Failed to verify Sensors.ITG3205 device ID");
         }
     }
