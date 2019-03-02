@@ -154,6 +154,7 @@ public class ITG3205 {
      * @throws IOException
      */
     public boolean verifyDeviceID() throws IOException {
+        System.out.println("read deviceID = " + readDeviceID());
         return readDeviceID() == 0b110100;
     }
 
