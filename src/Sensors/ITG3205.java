@@ -105,7 +105,7 @@ public class ITG3205 {
     /**
      * I2C bus number to use to access device.
      */
-    private final int i2cBus = I2CBus.BUS_1;
+    private I2CBus i2cBus;// = I2CBus.BUS_1;
 
     /**
      * Address of I2C device.
@@ -125,7 +125,7 @@ public class ITG3205 {
 
     public ITG3205() throws IOException, UnsupportedBusNumberException {
 
-        this(ITG3205_DEFAULT_ADDRESS);
+        //devAddr = ITG3205_DEFAULT_ADDRESS;
         this.setup();
         this.writeSampleRateDivider(2); // 2667 Hz
         this.writeDLPFBandwidth(ITG3205.ITG3205_DLPF_BW_256);
@@ -135,36 +135,20 @@ public class ITG3205 {
     }
 
     /**
-     * Specific address constructor.
-     * @param address I2C address
-     */
-    public ITG3205(int address) throws IOException, UnsupportedBusNumberException{
-
-//        devAddr = address;
-        this.setup();
-        this.writeSampleRateDivider(2); // 2667 Hz
-        this.writeDLPFBandwidth(ITG3205.ITG3205_DLPF_BW_256);
-
-    }
-
-    /**
      * Setup the sensor for general usage.
-     *
      * @throws IOException
      */
     public void setup() throws IOException, UnsupportedBusNumberException {
         // http://pi4j.com/example/control.html
-        i2c = I2CFactory.getInstance(i2cBus).getDevice(devAddr);
+        this.i2cBus = GetBusClass.getBus();
+        i2c = i2cBus.getDevice(devAddr);//I2CFactory.getInstance(1).getDevice(devAddr);
 
         writeFullScaleRange(ITG3205_FULLSCALE_2000);
         writeClockSource(ITG3205_CLOCK_PLL_XGYRO);
-
-
     }
 
     /**
      * Verify the device ID.
-     *
      * @return True if device ID is valid, false otherwise
      * @throws IOException
      */
@@ -174,11 +158,8 @@ public class ITG3205 {
 
     /**
      * Reads the device ID.
-     *
      * Register 0 - Who Am I
-     *
      * This register is used to verify the identity of the device.
-     *
      * @return
      * @throws IOException
      */

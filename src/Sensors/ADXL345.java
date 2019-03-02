@@ -4,6 +4,7 @@ import com.pi4j.io.i2c.I2CBus;
 import com.pi4j.io.i2c.I2CDevice;
 import com.pi4j.io.i2c.I2CFactory;
 
+
 import java.io.IOException;
 
 public class ADXL345 {
@@ -28,7 +29,7 @@ public class ADXL345 {
     public ADXL345() throws IOException, I2CFactory.UnsupportedBusNumberException, InterruptedException{
         //--------------ADXL345-----------------------------------------------------------------
         // get the I2C bus to communicate on
-        I2CBus i2c = I2CFactory.getInstance(I2CBus.BUS_1);
+        I2CBus i2c = GetBusClass.getBus();//I2CFactory.getInstance(I2CBus.BUS_1);
         // create an I2C device for an individual device on the bus that you want to communicate with
         this.device = i2c.getDevice(ADXL345_ADDR);
         // Select Bandwidth rate register, Normal mode, Output data rate = 100 Hz

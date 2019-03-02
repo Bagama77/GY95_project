@@ -17,8 +17,6 @@ public class Main {
 
     public static void main(String[] args) throws InterruptedException, IOException, UnsupportedBusNumberException {
 
-        ADXL345 adxl345 = new ADXL345();
-
         // create Pi4J console wrapper/helper
         // (This is a utility class to abstract some of the boilerplate code)
         final Console console = new Console();
@@ -27,14 +25,14 @@ public class Main {
         // allow for user to exit program using CTRL-C
         console.promptForExit();
 
+        //--------------Sensors.ADXL345----------------------------------------------------------------
+        ADXL345 adxl345 = new ADXL345();
         //--------------Sensors.ITG3205----------------------------------------------------------------
-        // http://developer-blog.net/wp-content/uploads/2013/09/raspberry-pi-rev2-gpio-pinout.jpg
-        // http://pi4j.com/example/control.html
         ITG3205 itg3205 = new ITG3205();
 
         //--------------------------MAIN CYCLE--------------------------------
         while(true){
-            //--------------------ADXL345-------------------------------------
+            //------------------Sensors.ADXL345------------------------------------
             adxl345.readRegisters();
             int xAccl = adxl345.getxAccl();
             int yAccl = adxl345.getyAccl();
