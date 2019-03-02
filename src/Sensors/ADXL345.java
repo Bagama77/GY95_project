@@ -30,6 +30,7 @@ public class ADXL345 {
         //--------------ADXL345-----------------------------------------------------------------
         // get the I2C bus to communicate on
         I2CBus i2c = GetBusClass.getBus();//I2CFactory.getInstance(I2CBus.BUS_1);
+        System.out.println("ADXL345 i2c bus hash: " + i2c);
         // create an I2C device for an individual device on the bus that you want to communicate with
         this.device = i2c.getDevice(ADXL345_ADDR);
         // Select Bandwidth rate register, Normal mode, Output data rate = 100 Hz

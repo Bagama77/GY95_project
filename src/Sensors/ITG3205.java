@@ -141,6 +141,7 @@ public class ITG3205 {
     public void setup() throws IOException, UnsupportedBusNumberException {
         // http://pi4j.com/example/control.html
         this.i2cBus = GetBusClass.getBus();
+        System.out.println("ITG3205 i2c bus hash: " + this.i2cBus);
         i2c = i2cBus.getDevice(devAddr);//I2CFactory.getInstance(1).getDevice(devAddr);
 
         writeFullScaleRange(ITG3205_FULLSCALE_2000);
