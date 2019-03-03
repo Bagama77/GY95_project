@@ -13,7 +13,7 @@ public class GetBusClass {
                 i2cBus = I2CFactory.getInstance(I2CBus.BUS_1);
             }
         }catch (Exception e){
-            System.out.println("EException in GetBusClass constructor");
+            System.out.println("EException in Sensors.GetBusClass constructor");
             e.printStackTrace();
         }
     }

@@ -22,7 +22,7 @@ public class JBalancePI{
     private float angle_filtered = 0.0F;
     private final float pi = 3.1416F;
 
-    //Last time in Filter calculation
+    //Last time in filter calculation
     long preTime = 0;
     //Last time in PID calculation
     private long lastTime = 0;
@@ -32,7 +32,9 @@ public class JBalancePI{
     //PID last error
     private float lastErr = 0;
 
-
+    public float getAngle_filtered() {
+        return angle_filtered;
+    }
 
     //>0 move motor forward, <0 move motor back
     private int LOutput, ROutput;
@@ -52,41 +54,43 @@ public class JBalancePI{
      * Read data from accelerometer and gyroscope and apply a complimentary
      * filter
      */
-//    private void Filter() {
-//        //Data from MPU6050 Accelerometer and Gyroscope
-//        data = accel.getMotion6();
-//        //Calculate angle and convert from radians to degrees
-//        float angle_raw = (float) (Math.atan2(data.AccelY, data.AccelZ) * 180.00 / pi + accel_offset);
-//        float omega = (float) (data.GyroX / gyro_gain + gyro_offset);
-//        // Filters data to get the real value
-//        long now = System.currentTimeMillis();
-//        float dt = (float) ((now - preTime) / 1000.00);
-//        preTime = now;
-//        //Calculate error using complimentary filter
-//        float K = 0.8F;
-//        float A = K / (K + dt);
-//        angle_filtered = A * (angle_filtered + omega * dt) + (1 - A) * angle_raw;
-//
-//        logger.log(Level.INFO,"Filter: angle_filtered = " + angle_filtered);
-//    }
+    public float filter(int xAccel, int yAxxel, int zAxxel, float rX, float rY, float rZ) {
+        //Data from MPU6050 Accelerometer and Gyroscope
+        //******data = accel.getMotion6();
+        //Calculate angle and convert from radians to degrees
+        float angle_raw = (float) (Math.atan2(yAxxel, zAxxel) * 180.00 / pi + accel_offset);
+        float omega = (rX / gyro_gain + gyro_offset);
+        // Filters data to get the real value
+        long now = System.currentTimeMillis();
+        float dt = (float) ((now - preTime) / 1000.00);
+        preTime = now;
+        //Calculate error using complimentary filter
+        float K = 0.8F;
+        float A = K / (K + dt);
+        logger.log(Level.INFO, "A = " + A + ", omega = " + omega + ", dt = " + dt + ", angle_raw = " + angle_raw);
+        angle_filtered = A * (angle_filtered + omega * dt) + (1 - A) * angle_raw;
+
+        logger.log(Level.INFO,"filter: angle_filtered = " + angle_filtered);
+        return angle_filtered;
+    }
 
     /*
      * Proportional, Integral, Derivative control.
      */
-    private void PID() {
-        long now = System.currentTimeMillis();
-        int timeChange = (int) (now - lastTime);
-        lastTime = now;
-        float error = angle_filtered;  // Proportion
-        errSum += error * timeChange;  // Integration
-        float dErr = (error - lastErr) / timeChange;  // Differentiation
-        float output = Kp * error + Ki * errSum + Kd * dErr;
-        lastErr = error;
+//    private void PID() {
+//        long now = System.currentTimeMillis();
+//        int timeChange = (int) (now - lastTime);
+//        lastTime = now;
+//        float error = angle_filtered;  // Proportion
+//        errSum += error * timeChange;  // Integration
+//        float dErr = (error - lastErr) / timeChange;  // Differentiation
+//        float output = Kp * error + Ki * errSum + Kd * dErr;
+//        lastErr = error;
 //        LOutput = output - Turn_Speed + Run_Speed;
 //        ROutput = output + Turn_Speed + Run_Speed;
 //        logger.log(Level.INFO,"PID: " + LOutput + ROutput);
 
-    }
+//    }
 
     /*
      * PWM Motor control 
@@ -119,7 +123,7 @@ public class JBalancePI{
 //        @Override
 //        public void run() {
 //            while (shouldRun) {
-//                Filter();
+//                filter();
 //                Logger.getGlobal().log(Level.INFO, "Angle = " + angle_filtered);
 //                // If angle > 45 or < -45 then stop the robot
 //                if (Math.abs(angle_filtered) < 45) {
@@ -131,7 +135,7 @@ public class JBalancePI{
 //
 //                    // Keep reading accelerometer and gyroscope values after falling down
 //                    for (int i = 0; i < 100; i++) {
-//                        Filter();
+//                        filter();
 //                    }
 //
 //                    if (Math.abs(angle_filtered) < 45) // Empty data and restart the robot automaticlly
@@ -139,7 +143,7 @@ public class JBalancePI{
 //                        for (int i = 0; i <= 500; i++) // Reset the robot and delay 2 seconds
 //                        {
 //                            angle_filtered = 0;
-//                            Filter();
+//                            filter();
 //                            errSum = Run_Speed = Turn_Speed = 0;
 //                            PID();
 //                        }
@@ -151,5 +155,6 @@ public class JBalancePI{
 //            motor.close();
 //        }
 //    }
+
 
 }

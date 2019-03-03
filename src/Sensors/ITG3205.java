@@ -279,7 +279,7 @@ public class ITG3205 {
      * the table below.
      *
      * <pre>
-     * DLPF_CFG | Low Pass Filter Bandwidth | Internal Sample Rate
+     * DLPF_CFG | Low Pass filter Bandwidth | Internal Sample Rate
      *     0    |            256Hz          |         8kHz
      *     1    |            188Hz          |         1kHz
      *     2    |             98Hz          |         1kHz
@@ -307,7 +307,7 @@ public class ITG3205 {
      * the table below.
      *
      * <pre>
-     * DLPF_CFG | Low Pass Filter Bandwidth | Internal Sample Rate
+     * DLPF_CFG | Low Pass filter Bandwidth | Internal Sample Rate
      *     0    |            256Hz          |         8kHz
      *     1    |            188Hz          |         1kHz
      *     2    |             98Hz          |         1kHz

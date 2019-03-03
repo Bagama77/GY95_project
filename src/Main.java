@@ -3,11 +3,9 @@ import java.io.IOException;
 
 import Sensors.ADXL345;
 import Sensors.ITG3205;
-import com.pi4j.io.i2c.I2CBus;
-import com.pi4j.io.i2c.I2CDevice;
-import com.pi4j.io.i2c.I2CFactory;
 import com.pi4j.io.i2c.I2CFactory.UnsupportedBusNumberException;
 import com.pi4j.util.Console;
+import logic.JBalancePI;
 
 public class Main {
 
@@ -29,8 +27,11 @@ public class Main {
         ADXL345 adxl345 = new ADXL345();
         //--------------Sensors.ITG3205----------------------------------------------------------------
         ITG3205 itg3205 = new ITG3205();
+        //--------------Complementary filter class-----------------------------------------------------
+        JBalancePI jBalancePI = new JBalancePI();
 
         //--------------------------MAIN CYCLE--------------------------------
+        float angle_filtered;
         while(true){
             //------------------Sensors.ADXL345------------------------------------
             adxl345.readRegisters();
@@ -47,6 +48,8 @@ public class Main {
             System.out.printf("ADXL: X-Axis = %d, Y-Axis = %d, Y-Axis = %d \r\n", xAccl, yAccl, zAccl);
             System.out.printf("ITG3205: x= %f, y=%f, z=%f deg/s \r\n", rX, rY, rZ);
             Thread.sleep(500);
+            //calculation of angle_filtered (complementary filter)
+            angle_filtered = jBalancePI.filter(xAccl, yAccl, zAccl, rX, rY, rZ);
         }
 
     }
