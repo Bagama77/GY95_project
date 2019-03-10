@@ -77,7 +77,7 @@ public class JBalancePI{
     /*
      * Proportional, Integral, Derivative control.
      */
-    private void PID() {
+    public void PID() {
         long now = System.currentTimeMillis();
         int timeChange = (int) (now - lastTime);
         lastTime = now;
