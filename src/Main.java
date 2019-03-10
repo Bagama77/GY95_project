@@ -45,7 +45,7 @@ public class Main {
             float rY = itg3205.getR()[1];
             float rZ = itg3205.getR()[2];
             //--------------print in console-----------------------
-            System.out.printf("ADXL: X-Axis = %d, Y-Axis = %d, Y-Axis = %d \r\n", xAccl, yAccl, zAccl);
+            System.out.printf("ADXL: X-Axis = %d, Y-Axis = %d, Z-Axis = %d \r\n", xAccl, yAccl, zAccl);
             System.out.printf("ITG3205: x= %f, y=%f, z=%f deg/s \r\n", rX, rY, rZ);
             Thread.sleep(500);
             //calculation of angle_filtered (complementary filter)

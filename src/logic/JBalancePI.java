@@ -77,20 +77,20 @@ public class JBalancePI{
     /*
      * Proportional, Integral, Derivative control.
      */
-//    private void PID() {
-//        long now = System.currentTimeMillis();
-//        int timeChange = (int) (now - lastTime);
-//        lastTime = now;
-//        float error = angle_filtered;  // Proportion
-//        errSum += error * timeChange;  // Integration
-//        float dErr = (error - lastErr) / timeChange;  // Differentiation
-//        float output = Kp * error + Ki * errSum + Kd * dErr;
-//        lastErr = error;
-//        LOutput = output - Turn_Speed + Run_Speed;
-//        ROutput = output + Turn_Speed + Run_Speed;
-//        logger.log(Level.INFO,"PID: " + LOutput + ROutput);
+    private void PID() {
+        long now = System.currentTimeMillis();
+        int timeChange = (int) (now - lastTime);
+        lastTime = now;
+        float error = angle_filtered;  // Proportion
+        errSum += error * timeChange;  // Integration
+        float dErr = (error - lastErr) / timeChange;  // Differentiation
+        float output = Kp * error + Ki * errSum + Kd * dErr;
+        lastErr = error;
+        LOutput = (int)output;// - Turn_Speed + Run_Speed;
+        ROutput = (int)output;// + Turn_Speed + Run_Speed;
+        logger.log(Level.INFO,"PID: " + LOutput + ROutput);
 
-//    }
+    }
 
     /*
      * PWM Motor control 
