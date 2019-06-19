@@ -36,11 +36,6 @@ public class JBalancePI{
     private ControlMotorsDirectionAndSpeed motors = new ControlMotorsDirectionAndSpeed();
     private boolean pinA;//forward
     private boolean pinB;//backward
-    private int speed;
-
-    public float getAngle_filtered() {
-        return angle_filtered;
-    }
 
     //>0 move motor forward, <0 move motor back
     private int LOutput, ROutput;
@@ -85,7 +80,8 @@ public class JBalancePI{
 
         if(LOutput > 0) pinA = true; pinB = false;
         if(LOutput < 0) pinA = false; pinB = true;
-        motors.motorDirectionAndSpeed(pinA, pinB, Math.abs(LOutput));
+
+        motors.motorDirectionAndSpeed(true, false, 50);//Math.abs(LOutput));
     }
 }
 
