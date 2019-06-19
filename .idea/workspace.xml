@@ -7,9 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2f701eef-65c7-439a-9ad3-4cf019c59099" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/linux_i2c_1_0_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/linux_i2c_1_0_0.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/GY95.iml" afterPath="$PROJECT_DIR$/GY95.iml" />
+      <change beforePath="$PROJECT_DIR$/src/logic/JBalancePI.java" afterPath="$PROJECT_DIR$/src/logic/JBalancePI.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,8 +23,8 @@
       <file leaf-file-name="ADXL345.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Sensors/ADXL345.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="73" column="15" lean-forward="false" selection-start-line="73" selection-start-column="14" selection-end-line="73" selection-end-column="15" />
+            <state relative-caret-position="343">
+              <caret line="35" column="55" lean-forward="false" selection-start-line="35" selection-start-column="55" selection-end-line="35" selection-end-column="55" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2791#2792#0" expanded="true" />
@@ -48,8 +47,8 @@
       <file leaf-file-name="ITG3205.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Sensors/ITG3205.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2046">
-              <caret line="99" column="0" lean-forward="false" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
+            <state relative-caret-position="187">
+              <caret line="140" column="73" lean-forward="false" selection-start-line="140" selection-start-column="44" selection-end-line="140" selection-end-column="73" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -60,8 +59,8 @@
       <file leaf-file-name="JBalancePI.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/logic/JBalancePI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="67" column="23" lean-forward="true" selection-start-line="67" selection-start-column="23" selection-end-line="67" selection-end-column="23" />
+            <state relative-caret-position="374">
+              <caret line="83" column="57" lean-forward="false" selection-start-line="83" selection-start-column="57" selection-end-line="83" selection-end-column="57" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -109,6 +108,7 @@
       <find>new ITG3205</find>
       <find>ID</find>
       <find>Turn_Speed</find>
+      <find>UnsupportedBusNumberException</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -221,7 +221,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="C:/Program Files/Java/jdk1.8.0_181/lib/linux-i2c-1.0.0.jar!/" />
+    <property name="last_opened_file_path" value="C:/Program Files/Java/jdk1.8.0_181/lib/pi4j-core.jar!/com/pi4j/io/i2c/impl" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -384,12 +384,12 @@
       <workItem from="1549545576479" duration="8339000" />
       <workItem from="1551132113929" duration="3156000" />
       <workItem from="1552051892463" duration="1463000" />
-      <workItem from="1560793310701" duration="3777000" />
+      <workItem from="1560793310701" duration="5000000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51936000" />
+    <option name="totallyTimeSpent" value="53159000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -752,38 +752,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sensors/ADXL345.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="73" column="15" lean-forward="false" selection-start-line="73" selection-start-column="14" selection-end-line="73" selection-end-column="15" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2791#2792#0" expanded="true" />
-            <element signature="e#2819#2820#0" expanded="true" />
-            <element signature="e#2858#2859#0" expanded="true" />
-            <element signature="e#2892#2893#0" expanded="true" />
-            <element signature="e#2921#2922#0" expanded="true" />
-            <element signature="e#2949#2950#0" expanded="true" />
-            <element signature="e#2988#2989#0" expanded="true" />
-            <element signature="e#3022#3023#0" expanded="true" />
-            <element signature="e#3051#3052#0" expanded="true" />
-            <element signature="e#3079#3080#0" expanded="true" />
-            <element signature="e#3118#3119#0" expanded="true" />
-            <element signature="e#3152#3153#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sensors/ITG3205.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2046">
-          <caret line="99" column="0" lean-forward="false" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="762">
@@ -804,10 +772,42 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Sensors/ITG3205.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="140" column="73" lean-forward="false" selection-start-line="140" selection-start-column="44" selection-end-line="140" selection-end-column="73" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Sensors/ADXL345.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="343">
+          <caret line="35" column="55" lean-forward="false" selection-start-line="35" selection-start-column="55" selection-end-line="35" selection-end-column="55" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2791#2792#0" expanded="true" />
+            <element signature="e#2819#2820#0" expanded="true" />
+            <element signature="e#2858#2859#0" expanded="true" />
+            <element signature="e#2892#2893#0" expanded="true" />
+            <element signature="e#2921#2922#0" expanded="true" />
+            <element signature="e#2949#2950#0" expanded="true" />
+            <element signature="e#2988#2989#0" expanded="true" />
+            <element signature="e#3022#3023#0" expanded="true" />
+            <element signature="e#3051#3052#0" expanded="true" />
+            <element signature="e#3079#3080#0" expanded="true" />
+            <element signature="e#3118#3119#0" expanded="true" />
+            <element signature="e#3152#3153#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/logic/JBalancePI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="67" column="23" lean-forward="true" selection-start-line="67" selection-start-column="23" selection-end-line="67" selection-end-column="23" />
+        <state relative-caret-position="374">
+          <caret line="83" column="57" lean-forward="false" selection-start-line="83" selection-start-column="57" selection-end-line="83" selection-end-column="57" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
