@@ -1,26 +1,26 @@
 package logic;
 
-import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 
 public class JBalancePI{
 
     private final Logger logger = Logger.getLogger("main");
 
     // These values must be adjusted for convenience
-    private final float accel_offset = 3.7F;
-    private final float gyro_gain = 131F;
-    private final float gyro_offset = 0.0F;
+    private final float ACCEL_OFFSET = 3.7F;
+    private final float GYRO_GAIN = 131F;
+    private final float GYRO_OFFSET = 0.0F;
 
     //Set point values used in PID controller
-    private final float Kp = 17F;
-    private final float Kd = 840F;
-    private final float Ki = 0.1F;
+    private final float KP = 17F;
+    private final float KD = 840F;
+    private final float KI = 0.1F;
 
     //For angle formula using complimentary filter
     private float angle_filtered = 0.0F;
-    private final float pi = 3.1416F;
+    private final float PI = 3.1416F;
 
     //Last time in filter calculation
     long preTime = 0;
@@ -32,34 +32,29 @@ public class JBalancePI{
     //PID last error
     private float lastErr = 0;
 
+    //instance of motors API
+    private ControlMotorsDirectionAndSpeed motors = new ControlMotorsDirectionAndSpeed();
+    private boolean pinA;//forward
+    private boolean pinB;//backward
+    private int speed;
+
     public float getAngle_filtered() {
         return angle_filtered;
     }
 
     //>0 move motor forward, <0 move motor back
     private int LOutput, ROutput;
-//
-//    //Read MPU6050 with I2C comunication bus
-//    MPU6050Device accel;
-//    //Motor interface using GPIO comunication bus
-//    L298Device motor;
-//    //Store accelerometer and gyroscope read data
-//    AccelGyroRaw data;
 
     //Define execution of read sensors thread
     private volatile boolean shouldRun = true;
-//    private ControlLoop controlLoopTask;
 
-    /**
-     * Read data from accelerometer and gyroscope and apply a complimentary
-     * filter
-     */
+
+    /*** Read data from accelerometer and gyroscope and apply a complimentary filter*/
     public float filter(int xAccel, int yAxxel, int zAxxel, float rX, float rY, float rZ) {
         //Data from MPU6050 Accelerometer and Gyroscope
-        //******data = accel.getMotion6();
         //Calculate angle and convert from radians to degrees
-        float angle_raw = (float) (Math.atan2(yAxxel, zAxxel) * 180.00 / pi + accel_offset);
-        float omega = (rX / gyro_gain + gyro_offset);
+        float angle_raw = (float) (Math.atan2(yAxxel, zAxxel) * 180.00 / PI + ACCEL_OFFSET);
+        float omega = (rX / GYRO_GAIN + GYRO_OFFSET);
         // Filters data to get the real value
         long now = System.currentTimeMillis();
         float dt = (float) ((now - preTime) / 1000.00);
@@ -74,9 +69,7 @@ public class JBalancePI{
         return angle_filtered;
     }
 
-    /*
-     * Proportional, Integral, Derivative control.
-     */
+    /** Proportional, Integral, Derivative control.*/
     public void PID() {
         long now = System.currentTimeMillis();
         int timeChange = (int) (now - lastTime);
@@ -84,17 +77,21 @@ public class JBalancePI{
         float error = angle_filtered;  // Proportion
         errSum += error * timeChange;  // Integration
         float dErr = (error - lastErr) / timeChange;  // Differentiation
-        float output = Kp * error + Ki * errSum + Kd * dErr;
+        float output = KP * error + KI * errSum + KD * dErr;
         lastErr = error;
         LOutput = (int)output;// - Turn_Speed + Run_Speed;
         ROutput = (int)output;// + Turn_Speed + Run_Speed;
         logger.log(Level.INFO,"PID: " + LOutput + ROutput);
 
+        if(LOutput > 0) pinA = true; pinB = false;
+        if(LOutput < 0) pinA = false; pinB = true;
+        motors.motorDirectionAndSpeed(pinA, pinB, Math.abs(LOutput));
     }
+}
 
-    /*
-     * PWM Motor control 
-     */
+/*
+ * PWM Motor control
+ */
 //    private void PWMControl() {
 //        if (LOutput > 0) {
 //            motor.moveL_Forward();
@@ -115,9 +112,9 @@ public class JBalancePI{
 //
 //    }
 
-    /*
-     * Thread for move and balance robot
-     */
+/*
+ * Thread for move and balance robot
+ */
 //    class ControlLoop extends Thread {
 //
 //        @Override
@@ -155,6 +152,3 @@ public class JBalancePI{
 //            motor.close();
 //        }
 //    }
-
-
-}

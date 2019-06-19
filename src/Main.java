@@ -51,6 +51,8 @@ public class Main {
             //calculation of angle_filtered (complementary filter)
             angle_filtered = jBalancePI.filter(xAccl, yAccl, zAccl, rX, rY, rZ);
             jBalancePI.PID();
+
+
         }
 
     }
