@@ -36,6 +36,7 @@ public class JBalancePI{
     private ControlMotorsDirectionAndSpeed motors = new ControlMotorsDirectionAndSpeed();
     private boolean pinA;//forward
     private boolean pinB;//backward
+    private int speed;
 
     //>0 move motor forward, <0 move motor back
     private int LOutput, ROutput;
@@ -57,7 +58,7 @@ public class JBalancePI{
         //Calculate error using complimentary filter
         float K = 0.8F;
         float A = K / (K + dt);
-        logger.log(Level.INFO, "A = " + A + ", omega = " + omega + ", dt = " + dt + ", angle_raw = " + angle_raw);
+        //logger.log(Level.INFO, "A = " + A + ", omega = " + omega + ", dt = " + dt + ", angle_raw = " + angle_raw);
         angle_filtered = A * (angle_filtered + omega * dt) + (1 - A) * angle_raw;
 
         logger.log(Level.INFO,"filter: angle_filtered = " + angle_filtered);
@@ -75,13 +76,21 @@ public class JBalancePI{
         float output = KP * error + KI * errSum + KD * dErr;
         lastErr = error;
         LOutput = (int)output;// - Turn_Speed + Run_Speed;
-        ROutput = (int)output;// + Turn_Speed + Run_Speed;
-        logger.log(Level.INFO,"PID: " + LOutput + ROutput);
+//        ROutput = (int)output;// + Turn_Speed + Run_Speed;
+        logger.log(Level.INFO,"PID: " + LOutput);// + ROutput);
 
-        if(LOutput > 0) pinA = true; pinB = false;
-        if(LOutput < 0) pinA = false; pinB = true;
+        if(LOutput > 0) {
+            pinA = true;pinB = false;
+            speed = (LOutput - 1167090000)/100;
+        }
 
-        motors.motorDirectionAndSpeed(pinA, pinB, Math.abs(LOutput));
+        if(LOutput < 0) {
+            pinA = false;
+            pinB = true;
+            speed = ((LOutput * -1) - 1167090000)/100;
+        }
+
+        motors.motorDirectionAndSpeed(pinA, pinB, speed);
     }
 }
 
