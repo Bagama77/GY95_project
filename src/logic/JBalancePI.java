@@ -81,7 +81,7 @@ public class JBalancePI{
         if(LOutput > 0) pinA = true; pinB = false;
         if(LOutput < 0) pinA = false; pinB = true;
 
-        motors.motorDirectionAndSpeed(pinA, pinB, LOutput);//Math.abs(LOutput));
+        motors.motorDirectionAndSpeed(pinA, pinB, Math.abs(LOutput));
     }
 }
 
