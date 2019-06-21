@@ -85,7 +85,7 @@ public class JBalancePI{
             speed = 45/100 * (int)angle_filtered;//(LOutput - 1167090000)/100;
         }
 
-        if(LOutput < 0) {
+        if(angle_filtered < 0) {
             pinA = false;
             pinB = true;
             speed = 45/100 * (int)(angle_filtered*-1);//((LOutput * -1) - 1167090000)/100;
