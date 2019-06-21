@@ -88,7 +88,7 @@ public class JBalancePI{
         if(angle_filtered < 0) {
             pinA = false;
             pinB = true;
-            speed = 45/100 * (int)(angle_filtered*-1);//((LOutput * -1) - 1167090000)/100;
+            speed = 25;//45/100 * (int)(angle_filtered*-1);//((LOutput * -1) - 1167090000)/100;
         }
 
         motors.motorDirectionAndSpeed(pinA, pinB, speed);
