@@ -71,14 +71,14 @@ public class ControlMotorsDirectionAndSpeed {
 
         gpio.shutdown();
 */
-        ControlMotorsDirectionAndSpeed controlMotorsDirectionAndSpeed = new ControlMotorsDirectionAndSpeed();
-        controlMotorsDirectionAndSpeed.motorDirectionAndSpeed(true, false, 50);
-        Thread.sleep(5000);
-
-        controlMotorsDirectionAndSpeed.motorDirectionAndSpeed(false, true, 50);
-        Thread.sleep(5000);
-
-        controlMotorsDirectionAndSpeed.motorDirectionAndSpeed(false, false, 0);
+//        ControlMotorsDirectionAndSpeed controlMotorsDirectionAndSpeed = new ControlMotorsDirectionAndSpeed();
+//        controlMotorsDirectionAndSpeed.motorDirectionAndSpeed(true, false, 50);
+//        Thread.sleep(5000);
+//
+//        controlMotorsDirectionAndSpeed.motorDirectionAndSpeed(false, true, 50);
+//        Thread.sleep(5000);
+//
+//        controlMotorsDirectionAndSpeed.motorDirectionAndSpeed(false, false, 0);
 
     }
 }

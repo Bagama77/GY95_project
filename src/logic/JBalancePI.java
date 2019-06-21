@@ -91,7 +91,7 @@ public class JBalancePI{
             speed = 25;//45/100 * (int)(angle_filtered*-1);//((LOutput * -1) - 1167090000)/100;
         }
 
-        motors.motorDirectionAndSpeed(pinA, pinB, speed);
+        motors.motorDirectionAndSpeed(pinA, pinB, 35);
     }
 }
 
