@@ -8,6 +8,7 @@
   <component name="ChangeListManager">
     <list default="true" id="2f701eef-65c7-439a-9ad3-4cf019c59099" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/src/logic/ControlMotorsDirectionAndSpeed.java" afterPath="$PROJECT_DIR$/src/logic/ControlMotorsDirectionAndSpeed.java" />
       <change beforePath="$PROJECT_DIR$/src/logic/JBalancePI.java" afterPath="$PROJECT_DIR$/src/logic/JBalancePI.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -59,8 +60,8 @@
       <file leaf-file-name="JBalancePI.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/logic/JBalancePI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="90" column="25" lean-forward="false" selection-start-line="90" selection-start-column="25" selection-end-line="90" selection-end-column="25" />
+            <state relative-caret-position="506">
+              <caret line="93" column="52" lean-forward="false" selection-start-line="93" selection-start-column="52" selection-end-line="93" selection-end-column="52" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -83,8 +84,8 @@
       <file leaf-file-name="ControlMotorsDirectionAndSpeed.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/logic/ControlMotorsDirectionAndSpeed.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="484">
-              <caret line="24" column="51" lean-forward="false" selection-start-line="24" selection-start-column="51" selection-end-line="24" selection-end-column="51" />
+            <state relative-caret-position="1804">
+              <caret line="82" column="5" lean-forward="true" selection-start-line="82" selection-start-column="5" selection-end-line="82" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -138,6 +139,7 @@
         <option value="$PROJECT_DIR$/src/Sensors/ITG3205.java" />
         <option value="$PROJECT_DIR$/src/ControlMotorsDirectionAndSpeed.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
+        <option value="$PROJECT_DIR$/src/logic/ControlMotorsDirectionAndSpeed.java" />
         <option value="$PROJECT_DIR$/src/logic/JBalancePI.java" />
       </list>
     </option>
@@ -385,12 +387,12 @@
       <workItem from="1551132113929" duration="3156000" />
       <workItem from="1552051892463" duration="1463000" />
       <workItem from="1560793310701" duration="6376000" />
-      <workItem from="1561149825846" duration="1497000" />
+      <workItem from="1561149825846" duration="1741000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56032000" />
+    <option name="totallyTimeSpent" value="56276000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -768,16 +770,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/logic/ControlMotorsDirectionAndSpeed.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="24" column="51" lean-forward="false" selection-start-line="24" selection-start-column="51" selection-end-line="24" selection-end-column="51" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Sensors/ITG3205.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2948">
@@ -810,10 +802,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/logic/ControlMotorsDirectionAndSpeed.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1804">
+          <caret line="82" column="5" lean-forward="true" selection-start-line="82" selection-start-column="5" selection-end-line="82" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/logic/JBalancePI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="90" column="25" lean-forward="false" selection-start-line="90" selection-start-column="25" selection-end-line="90" selection-end-column="25" />
+        <state relative-caret-position="506">
+          <caret line="93" column="52" lean-forward="false" selection-start-line="93" selection-start-column="52" selection-end-line="93" selection-end-column="52" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
