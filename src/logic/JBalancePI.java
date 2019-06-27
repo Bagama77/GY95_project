@@ -76,7 +76,7 @@ public class JBalancePI{
         float output = KP * error  + KD * dErr;// + KI * errSum;
         lastErr = error;
         LOutput = (int)output;
-        logger.log(Level.INFO,"PID output: " + LOutput + " errSum: " + errSum + "  dErr: " + dErr);
+        logger.log(Level.INFO,"PID output: " + LOutput + "kp*error: " + KP*error + " errSum: " + errSum + "  dErr: " + dErr);
 
         if(angle_filtered > 0) {
             pinA = true;
