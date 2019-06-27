@@ -16,7 +16,7 @@ public class JBalancePI{
     //Set point values used in PID controller
     //input data suggestions: max angle = 15,
     private final float KP = 6;//17F;
-    private final float KD = 5.5F;//840F;
+    private final float KD = 15.5F;//840F;
     private final float KI = 0.03F;
 
     //For angle formula using complimentary filter
