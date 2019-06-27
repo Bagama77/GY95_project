@@ -17,7 +17,7 @@ public class JBalancePI{
     //input data suggestions: max angle = 15,
     private final float KP = 6;//17F;
     private final float KD = 0.5F;//840F;
-    private final float KI = 0.1F;
+    private final float KI = 0.03F;
 
     //For angle formula using complimentary filter
     private float angle_filtered = 0.0F;
@@ -67,16 +67,16 @@ public class JBalancePI{
 
     /** Proportional, Integral, Derivative control.*/
     public void PID() {
-        long now = System.currentTimeMillis();
-        int timeChange = (int) (now - lastTime);
-        lastTime = now;
+        long now2 = System.currentTimeMillis();
+        int timeChange = (int) (now2 - lastTime);
+        lastTime = now2;
         float error = angle_filtered;  // Proportion
         errSum += error * timeChange;  // Integration
         float dErr = (error - lastErr) / timeChange;  // Differentiation
         float output = KP * error + KI * errSum + KD * dErr;
         lastErr = error;
         LOutput = (int)output;
-        logger.log(Level.INFO,"PID output: " + LOutput);
+        logger.log(Level.INFO,"PID output: " + LOutput + "errSum: " + errSum);
 
         if(angle_filtered > 0) {
             pinA = true;
