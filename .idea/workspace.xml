@@ -60,7 +60,7 @@
         <entry file="file://$PROJECT_DIR$/src/logic/JBalancePI.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="264">
-              <caret line="78" column="76" lean-forward="false" selection-start-line="78" selection-start-column="76" selection-end-line="78" selection-end-column="76" />
+              <caret line="78" column="89" lean-forward="false" selection-start-line="78" selection-start-column="89" selection-end-line="78" selection-end-column="89" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -400,12 +400,12 @@
       <workItem from="1552051892463" duration="1463000" />
       <workItem from="1560793310701" duration="6376000" />
       <workItem from="1561149825846" duration="2262000" />
-      <workItem from="1561587638137" duration="3487000" />
+      <workItem from="1561587638137" duration="3760000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="60284000" />
+    <option name="totallyTimeSpent" value="60557000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -829,7 +829,7 @@
     <entry file="file://$PROJECT_DIR$/src/logic/JBalancePI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
-          <caret line="78" column="76" lean-forward="false" selection-start-line="78" selection-start-column="76" selection-end-line="78" selection-end-column="76" />
+          <caret line="78" column="89" lean-forward="false" selection-start-line="78" selection-start-column="89" selection-end-line="78" selection-end-column="89" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
