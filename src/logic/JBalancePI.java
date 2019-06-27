@@ -14,8 +14,9 @@ public class JBalancePI{
     private final float GYRO_OFFSET = 0.0F;
 
     //Set point values used in PID controller
-    private final float KP = 17F;
-    private final float KD = 840F;
+    //input data suggestions: max angle = 15,
+    private final float KP = 6;//17F;
+    private final float KD = 0.5F;//840F;
     private final float KI = 0.1F;
 
     //For angle formula using complimentary filter
@@ -58,7 +59,6 @@ public class JBalancePI{
         //Calculate error using complimentary filter
         float K = 0.8F;
         float A = K / (K + dt);
-        //logger.log(Level.INFO, "A = " + A + ", omega = " + omega + ", dt = " + dt + ", angle_raw = " + angle_raw);
         angle_filtered = A * (angle_filtered + omega * dt) + (1 - A) * angle_raw;
 
         logger.log(Level.INFO,"filter: angle_filtered = " + angle_filtered);
@@ -75,23 +75,20 @@ public class JBalancePI{
         float dErr = (error - lastErr) / timeChange;  // Differentiation
         float output = KP * error + KI * errSum + KD * dErr;
         lastErr = error;
-        LOutput = (int)output;// - Turn_Speed + Run_Speed;
-//        ROutput = (int)output;// + Turn_Speed + Run_Speed;
-        logger.log(Level.INFO,"PID: " + LOutput);// + ROutput);
+        LOutput = (int)output;
+        logger.log(Level.INFO,"PID output: " + LOutput);
 
         if(angle_filtered > 0) {
             pinA = true;
             pinB = false;
-            speed = 45/10 * (int)angle_filtered;//(LOutput - 1167090000)/100;
         }
 
         if(angle_filtered < 0) {
             pinA = false;
             pinB = true;
-            speed = 45/10 * (int)(angle_filtered*-1);//((LOutput * -1) - 1167090000)/100;
         }
 
-        motors.motorDirectionAndSpeed(pinA, pinB, speed);
+        motors.motorDirectionAndSpeed(pinA, pinB, LOutput);
     }
 }
 
