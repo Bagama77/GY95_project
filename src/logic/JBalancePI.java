@@ -73,7 +73,7 @@ public class JBalancePI{
         float error = angle_filtered;  // Proportion
         errSum += error * timeChange;  // Integration
         float dErr = (error - lastErr) / timeChange;  // Differentiation
-        float output = KP * error  + KD * dErr;// + KI * errSum;
+        float output = KP * error;//  + KD * dErr;// + KI * errSum;
         lastErr = error;
         LOutput = (int)output;
         logger.log(Level.INFO,"PID output: " + LOutput + "kp*error: " + KP*error + " errSum: " + errSum + "  dErr: " + dErr);
