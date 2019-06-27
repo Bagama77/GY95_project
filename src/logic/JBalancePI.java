@@ -57,7 +57,7 @@ public class JBalancePI{
         float dt = (float) ((now - preTime) / 1000.00);
         preTime = now;
         //Calculate error using complimentary filter
-        float K = 0.8F;
+        float K = 0.7F;//0.8F;
         float A = K / (K + dt);
         angle_filtered = A * (angle_filtered + omega * dt) + (1 - A) * angle_raw;
 
