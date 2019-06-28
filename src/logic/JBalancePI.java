@@ -59,7 +59,7 @@ public class JBalancePI{
         preTime = now;
         logger.log(Level.INFO,"dt = " + dt);
         //Calculate error using complimentary filter
-        float K = 0.7F;//0.8F;
+        float K = 0.8F;
         float A = K / (K + dt);
         angle_filtered = A * (angle_filtered + omega * dt) + (1 - A) * angle_raw;
 
@@ -70,7 +70,7 @@ public class JBalancePI{
     /** Proportional, Integral, Derivative control.*/
     public void PID() {
         long now2 = System.currentTimeMillis();
-        int timeChange = (int) (now2 - lastTime);
+        int timeChange = (int) (now2 - lastTime)/1000;
         lastTime = now2;
         float error = angle_filtered;  // Proportion
         errSum += error * timeChange;  // Integration
