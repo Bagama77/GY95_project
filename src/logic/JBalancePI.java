@@ -54,14 +54,16 @@ public class JBalancePI{
         float omega = (rX / GYRO_GAIN + GYRO_OFFSET);
         // Filters data to get the real value
         long now = System.currentTimeMillis();
+
         float dt = (float) ((now - preTime) / 1000.00);
         preTime = now;
+        logger.log(Level.INFO,"dt = " + dt);
         //Calculate error using complimentary filter
         float K = 0.7F;//0.8F;
         float A = K / (K + dt);
         angle_filtered = A * (angle_filtered + omega * dt) + (1 - A) * angle_raw;
 
-        logger.log(Level.INFO,"filter: angle_filtered = " + angle_filtered);
+//        logger.log(Level.INFO,"filter: angle_filtered = " + angle_filtered);
         return angle_filtered;
     }
 

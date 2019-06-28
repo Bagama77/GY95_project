@@ -20,6 +20,7 @@ public class ControlMotorsDirectionAndSpeed {
 
     public void motorDirectionAndSpeed(boolean pinA, boolean pinB, int speed) {
         if(speed < 0) speed = speed * -1;
+        if(speed > 100)  speed = 100;
         //move forward
         if(pinA) {
             SoftPwm.softPwmWrite(MOTOR_1_PIN_B, 0);
