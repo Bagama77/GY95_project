@@ -70,7 +70,7 @@ public class JBalancePI{
     /** Proportional, Integral, Derivative control.*/
     public void PID() {
         long now2 = System.currentTimeMillis();
-        int timeChange = (int) (now2 - lastTime)/1000;
+        int timeChange = (int) (now2 - lastTime);
         lastTime = now2;
         float error = angle_filtered;  // Proportion
         errSum += error * timeChange;  // Integration
