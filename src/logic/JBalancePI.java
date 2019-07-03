@@ -57,7 +57,7 @@ public class JBalancePI{
 
         float dt = (float) ((now - preTime) / 1000.00);
         preTime = now;
-        logger.log(Level.INFO,"dt = " + dt);
+        System.out.println("dt = " + dt);
         //Calculate error using complimentary filter
         float K = 0.8F;
         float A = K / (K + dt);
@@ -78,7 +78,7 @@ public class JBalancePI{
         float output = KP * error  + KD * dErr;// + KI * errSum;
         lastErr = error;
         LOutput = (int)output;
-        logger.log(Level.INFO,"PID output: " + LOutput + "kp*error: " + KP*error + " errSum: " + errSum + "  dErr: " + dErr);
+        System.out.println("PID output: " + LOutput + "kp*error: " + KP*error + " errSum: " + errSum + "  dErr: " + dErr);
 
         if(angle_filtered > 0) {
             pinA = true;
